@@ -3,10 +3,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
   }
-  
-  
-  
-  .regLogin-heading {
+  .auth-heading {
     padding: 10px 5px;
     text-align: center;
   }
@@ -24,12 +21,12 @@ body {
     justify-content: left;
   }
   
-  .loginReg-div {
+  .auth-div {
     display: flex;
     justify-content: right;
   }
   
-  .regLogin-table {
+  .auth-table {
     align-items: center;
     padding-top: 15px;
     padding-left: 90px;
