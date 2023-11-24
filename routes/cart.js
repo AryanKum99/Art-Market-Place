@@ -8,8 +8,7 @@ router.get('/showCart', (req, res) =>{
 router.get('/buyItems', isLoggedIn, async (req, res) =>{
     res.render('payment');
 });
-router.post('/buyItems/payment', isLoggedIn, async (req, res) =>{
-    
+router.post('/buyItems/payment', isLoggedIn, async (req, res) =>{  
 });
 router.post('/addQty', isLoggedIn, async (req, res) =>{
 });
