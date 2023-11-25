@@ -1,0 +1,31 @@
+.st-navbar-desktop-logo-link {
+    text-decoration: none;
+    color: white;
+    letter-spacing: 4px;
+    font-size: large;
+}
+
+.st-navbar-desktop-menu {
+    text-decoration: none;
+    color: white;
+    letter-spacing: 4px;
+    font-size: medium;
+}
+
+.midPage-logo {
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 18px;
+    letter-spacing: 10px;
+    font-size: medium;
+    color: white;
+}
+
+body {
+    height: 100vh;
+    background-image:
+        url("../images/cloudbg.jpg");
+    background-size: cover;
+    background-position: center;
+    text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
+    background-attachment: fixed;
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6d5b2cec0a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/auth.css">
+    <title>ArtHarbour</title>
+</head>
+<body>
+    <div id="st-navbar-desktop-wrapper" class="st-navbar-desktop-wrapper st-navbar-desktop-fixed">
+        <div class="st-navbar-desktop">
+          <div class="container">
+            <div class="st-navbar-desktop-logo">
+              <a class="st-navbar-desktop-logo-link" title="Logo" href="/"><img src="https://www.smoothemes.es/media/logos/smoothemes-logo.svg"></a>
+            </div>
+            <nav class="st-navbar-desktop-menu" role="navigation">
+              <ul id="st-navbar-desktop-menu-nav" class="sf-menu">
+                <li><a href="/paintings">Paintings</a></li>
+                <li><a href="/sketches">Sketches</a></li>
+                <li><a href="/sculptures">Sculptures</a></li>
+                <li><a href="/artists">Artists</a></li>
+                <li><a href="/cart"><li><a class="nav-link" href="/cart"><i class="fa-light fa-cart-shopping fa-lg"></i></a></li></a></li>
+                </ul>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>  
+      <div style="display: block;"><h2 class="art-heading">Featured Paintings</h2></div>
+      <section class="arts" id="art-list" >
+          <div>
+        <% prods.forEach(function(Product){%>
+            <% if(Product.category==='Sketches') {%>
+        <article>
+          <div class="row article-wrapper">
+            <div class="column card-div col-lg-4 mb-4">        
+            <figure>
+              <img src="https://img.freepik.com/free-photo/pleased-young-female-doctor-wearing-medical-robe-stethoscope-around-neck-standing-with-closed-posture_409827-254.jpg" alt="" />
+            </figure>
+            <div class="article-body">
+              <h2><p><%= Product.artName %></p></h2>
+              <p>
+                <p><%= Product.description %></p>
+                <p>Sell Price: <%= Product.price %></p>
+                <p>Category: <%= Product.category %></p>
+                <p>Listed By/Artist: <%= Product.listedBy %></p>
+                <p>Created: <%= Product.creationDate %></p>
+              </p>
+              <% } %>
+              <!-- <a href="#" class="read-more"> -->
+              <a href="/cart" class="appointment-btn scrollto"><span class="d-none d-md-inline">Add to</span> Cart</a></span>
+            </div>      
+        </div>
+      </div>
+        </article>
+        </div>
+        <% }) %>
+  </section>
+</body>
+</html>

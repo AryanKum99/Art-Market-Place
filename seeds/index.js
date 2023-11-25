@@ -14,18 +14,18 @@ db.once("open", () => {
 });
 const seedDB = async () => {
     await Product.deleteMany({});
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 19; i++) {
         const products = new Product({
             artName: `${prods[i].artName}`,
             description: `${prods[i].description}`,
             price: `${prods[i].price}`,
-            category:`${prods[i].category}`,
-            creationDate:`${prods[i].creationDate}`,
+            category: `${prods[i].category}`,
+            creationDate: `${prods[i].creationDate}`,
             image: `${prods[i].image}`,
             listedBy: `${prods[i].listedBy}`,
         });
         await products.save();
-        
+
     }
     console.log('saved')
 }

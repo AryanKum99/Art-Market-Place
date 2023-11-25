@@ -7,6 +7,8 @@
   <script src="https://kit.fontawesome.com/6d5b2cec0a.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/styles/main.css">
   <link rel="stylesheet" href="/styles/auth.css">
+  <link rel="stylesheet" href="/styles/home.css">
+  <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
   <title>ArtHarbour</title>
 </head>
 
@@ -16,27 +18,27 @@
     background-size: cover; background-position: center; text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5); box-shadow:
     inset 0 0 5rem rgba(0, 0, 0, 0.5);">
   <div id="st-navbar-desktop-wrapper" class="st-navbar-desktop-wrapper st-navbar-desktop-fixed">
-    <div class="st-navbar-desktop">
+    <!-- <div class="st-navbar-desktop">
       <div class="container">
         <div class="st-navbar-desktop-logo">
-          <a class="st-navbar-desktop-logo-link" title="Logo" href="/"><img
-              src="https://www.smoothemes.es/media/logos/smoothemes-logo.svg"></a>
+          <a class="st-navbar-desktop-logo-link" title="Logo" href="/" style="margin-left: 90px;">ArtHub</a>
         </div>
-        <nav class="st-navbar-desktop-menu" role="navigation">
+        <nav class="st-navbar-desktop-menu" role="navigation" style="margin-top: 5px;">
           <ul id="st-navbar-desktop-menu-nav" class="sf-menu">
-            <li><a href="/paintings">Paintings</a></li>
-            <li><a href="#">Sketches</a></li>
-            <li><a href="#">Sculptures</a></li>
-            <li><a href="#">Artists</a></li>
-            <li><a href="/cart">
-            <li><a class="nav-link" href="/cart"><i class="fa-light fa-cart-shopping fa-lg"></i></a></li></a></li>
+            <li><a href="/paintings" style="margin-right: 50px;">Paintings</a></li>
+            <li><a href="#" style="margin-right: 50px;">Sketches</a></li>
+            <li><a href="#" style="margin-right: 50px;">Sculptures</a></li>
+            <li><a href="#" style="margin-right: 50px;">Artists</a></li>
+            <li><a class="nav-link" href="/api/cart" style="margin-right: 50px;"><i
+                  class="fa-light fa-cart-shopping fa-lg"></i></a></li></a></li>
           </ul>
           </ul>
         </nav>
       </div>
-    </div>
+    </div> -->
+    <%- include('./partials/navbar') %>
   </div>
-  <div style="display: flex; justify-content: center; align-items: center; margin-top: 22.5%;">
+  <div class="midPage-logo" style="display: flex; justify-content: center; align-items: center; margin-top: 22.5%;">
     <h1>ArtHub</h1>
   </div>
 

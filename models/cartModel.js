@@ -4,16 +4,17 @@ const Schema = mongoose.Schema;
 
 const CartItemSchema = new Schema({
     product: {
-        type: mongoose.Schema.ObjectId, 
+        // type: mongoose.Schema.ObjectId, 
+        type: String,
         ref: 'Product'
     },
-    quantity: Number,
     status: {
         type: String,
         default: 'Not processed',
-        enum: ['Not processed' , 'Processing', 'Shipped', 'Delivered', 'Cancelled']},
-    netCost: Number
-  });
+        enum: ['Not processed', 'Processing', 'Shipped', 'Delivered', 'Cancelled']
+    },
+    price: Number
+});
 
 
 module.exports = mongoose.model('CartItem', CartItemSchema);

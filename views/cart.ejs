@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+
+<body>
+    <h1>Shopping Cart</h1>
+    <ul id="cartList"></ul>
+    <form id="addItemForm" action="/api/cart" method="post">
+        <label for="product">Art Name:</label>
+        <input type="text" id="product" name="product" required>
+        <label for="price">Price:</label>
+        <input type="number" id="price" name="price" required>
+        <button type="submit">Add to Cart</button>
+    </form>
+
+    <!-- <script>
+        const cartList = document.getElementById('cartList');
+        const addItemForm = document.getElementById('addItemForm');
+
+        async function fetchCartItems() {
+            const response = await fetch('/api/cart');
+            const items = await response.json();
+            displayCartItems(items);
+        }
+
+        function displayCartItems(items) {
+            cartList.innerHTML = '';
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.product} - $${item.price.toFixed(2)}`;
+                cartList.appendChild(li);
+            });
+        }
+
+        async function addItemToCart(product, price) {
+            const response = await fetch('/api/cart', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ product, price }),
+            });
+            const newItem = await response.json();
+            fetchCartItems();
+        }
+
+        fetchCartItems();
+
+        addItemForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const product = document.getElementById('product').value;
+            const price = parseFloat(document.getElementById('price').value);
+            addItemToCart(product, price);
+        });
+    </script> -->
+</body>
+
+</html>

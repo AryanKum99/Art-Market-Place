@@ -1,11 +1,186 @@
 
-/* img{
-  filter: blur(8px);
-  -webkit-filter: blur(8px);
-} */
+#art-list {
+  padding: 50px;
+  align-items: center;
+}
 
-/* Navbar desktop
--------------------------------------------------- */
+.art-img {
+  border-radius: 100%;
+  width: 30%;
+  float: left;
+}
+
+.art-column {
+  padding: 3% 2% 3% 2%;
+  border-radius: 3px;
+}
+
+.art-heading {
+  color: #000;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+article {
+  --img-scale: 1.001;
+  --title-color: black;
+  --link-icon-translate: -20px;
+  --link-icon-opacity: 0;
+  position: relative;
+  border-radius: 16px;
+  box-shadow: none;
+  background: #fff;
+  transform-origin: center;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+}
+
+article a::after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0;
+  cursor: pointer;
+  content: "";
+}
+
+/* basic article elements styling */
+article h2 {
+  margin: 0 0 18px 0;
+  font-family: "Bebas Neue", cursive;
+  font-size: 1.9rem;
+  letter-spacing: 0.06em;
+  color: var(--title-color);
+  transition: color 0.3s ease-out;
+}
+
+figure {
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+article img {
+  max-width: 100%;
+  transform-origin: center;
+  transform: scale(var(--img-scale));
+  transition: transform 0.4s ease-in-out;
+}
+
+.article-body {
+  padding: 24px;
+}
+
+article a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #28666e;
+}
+
+article a:focus {
+  outline: 1px dotted #28666e;
+}
+
+article a .icon {
+  min-width: 24px;
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+  transform: translateX(var(--link-icon-translate));
+  opacity: var(--link-icon-opacity);
+  transition: all 0.3s;
+}
+
+/* using the has() relational pseudo selector to update our custom properties */
+article:has(:hover, :focus) {
+  --img-scale: 1.1;
+  --title-color: #28666e;
+  --link-icon-translate: 0;
+  --link-icon-opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+
+/************************ 
+  Generic layout (demo looks)
+  **************************/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  /* padding: 48px 0; */
+  font-family: "Figtree", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  min-height: 100vh;
+}
+
+.arts {
+  display: grid;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+@media screen and (max-width: 960px) {
+  article {
+    container: card/inline-size;
+  }
+
+  .article-body p {
+    display: none;
+  }
+}
+
+@container card (min-width: 380px) {
+  .article-wrapper {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+  }
+
+  .article-body {
+    padding-left: 0;
+  }
+
+  figure {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  figure img {
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
 
 .st-navbar-desktop-wrapper {
   font-family: inherit;
@@ -19,15 +194,18 @@
   border-radius: 0;
   z-index: 1030;
 }
+
 .st-navbar-desktop-fixed {
   position: fixed;
   top: 0;
 }
+
 .st-navbar-desktop {
   position: relative;
   height: 80px;
   z-index: auto;
 }
+
 .st-navbar-desktop:before {
   content: '';
   display: block;
@@ -49,7 +227,8 @@
   float: left;
   margin: 26px 0 0;
 }
-.st-navbar-desktop-logo-link > img {
+
+.st-navbar-desktop-logo-link>img {
   width: 112px;
   height: 28px;
 }
@@ -66,14 +245,17 @@
 /* Navbar desktop menu superfish settings
 -------------------------------------------------- */
 
-.sf-menu, .sf-menu * {
+.sf-menu,
+.sf-menu * {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+
 .sf-menu li {
   position: relative;
 }
+
 .sf-menu ul {
   position: absolute;
   display: none;
@@ -81,17 +263,21 @@
   left: 0;
   z-index: 99;
 }
-.sf-menu > li {
+
+.sf-menu>li {
   float: left;
 }
-.sf-menu li:hover > ul,
-.sf-menu li.sfHover > ul {
+
+.sf-menu li:hover>ul,
+.sf-menu li.sfHover>ul {
   display: block;
 }
+
 .sf-menu a {
   display: block;
   position: relative;
 }
+
 .sf-menu ul ul {
   top: 0;
   left: 100%;
@@ -104,39 +290,47 @@
 .sf-menu {
   float: left;
 }
+
 .sf-menu ul {
   min-width: 180px;
 }
+
 .sf-menu a {
   padding: 28px 12px 29px 12px;
   text-decoration: none;
   zoom: 1;
 }
+
 .sf-menu li {
   white-space: nowrap;
   *white-space: normal;
   -webkit-transition: background .2s;
   transition: background .2s;
 }
+
 .sf-menu ul a {
   padding: 11px 12px 12px 12px;
   font-size: 13px;
 }
+
 .sf-menu li:hover,
 .sf-menu li.sfHover {
   -webkit-transition: none;
   transition: none;
 }
+
 /*** Align right ***/
 .sf-menu li.dropdown-right ul {
   left: auto;
   right: 0;
   min-width: 150px;
 }
+
 .sf-menu li.dropdown-right a {
   text-align: right;
   zoom: 1;
 }
+
 .sf-menu li.dropdown-right ul ul {
   right: 100%;
 }
@@ -149,15 +343,18 @@
 .sf-arrows .sf-with-ul {
   padding-right: 28px;
 }
+
 /*** Separacion chevron del texto en segundo level ***/
 .sf-arrows ul .sf-with-ul {
   padding-right: 38px;
 }
+
 /*** Separacion chevron del texto en segundo level dropdown right ***/
 .sf-arrows li.dropdown-right ul .sf-with-ul {
   padding-right: 12px;
   padding-left: 38px;
 }
+
 /*** Generated arrows ***/
 .sf-arrows .sf-with-ul:after {
   content: '\f0d7';
@@ -168,23 +365,27 @@
   height: 0;
   width: 0;
 }
-.sf-arrows > li > .sf-with-ul:focus:after,
-.sf-arrows > li:hover > .sf-with-ul:after,
-.sf-arrows > .sfHover > .sf-with-ul:after {
+
+.sf-arrows>li>.sf-with-ul:focus:after,
+.sf-arrows>li:hover>.sf-with-ul:after,
+.sf-arrows>.sfHover>.sf-with-ul:after {
   content: '\f0d8';
 }
+
 /*** Generated second arrows ***/
 .sf-arrows ul .sf-with-ul:after {
   content: '\f0da';
   margin-left: 5px;
   right: 20px;
 }
-.sf-arrows ul li > .sf-with-ul:focus:after,
-.sf-arrows ul li:hover > .sf-with-ul:after,
-.sf-arrows ul .sfHover > .sf-with-ul:after {
+
+.sf-arrows ul li>.sf-with-ul:focus:after,
+.sf-arrows ul li:hover>.sf-with-ul:after,
+.sf-arrows ul .sfHover>.sf-with-ul:after {
   content: '\f0d7';
   right: 23px;
 }
+
 /*** Generated second right arrows ***/
 .sf-arrows li.dropdown-right ul .sf-with-ul:after {
   float: left;
@@ -192,9 +393,10 @@
   margin-right: 30px;
   left: 10px;
 }
-.sf-arrows li.dropdown-right ul li > .sf-with-ul:focus:after,
-.sf-arrows li.dropdown-right ul li:hover > .sf-with-ul:after,
-.sf-arrows li.dropdown-right ul .sfHover > .sf-with-ul:after {
+
+.sf-arrows li.dropdown-right ul li>.sf-with-ul:focus:after,
+.sf-arrows li.dropdown-right ul li:hover>.sf-with-ul:after,
+.sf-arrows li.dropdown-right ul .sfHover>.sf-with-ul:after {
   content: '\f0d7';
   left: 10px;
 }
@@ -202,7 +404,7 @@
 
 /* Navbar desktop menu superfish last item
 -------------------------------------------------- */
-.sf-menu > li.no-padding-right > a {
+.sf-menu>li.no-padding-right>a {
   padding-right: 0px;
 }
 
@@ -211,63 +413,76 @@
 -------------------------------------------------- */
 
 /*** Navbar desktop ***/
-.st-navbar-desktop:before {
-  background-color: #BDD2FF;
-}
+.st-navbar-desktop:before {}
+
 /*** First level a ***/
 .sf-menu a {
   color: #ffffff;
 }
+
 .sf-menu a:hover,
 .sf-menu a:focus {
   color: #aaaaaa;
 }
+
 /*** Second level a ***/
 .sf-menu ul a {
   color: #cccccc;
 }
+
 .sf-menu ul a:hover,
 .sf-menu ul a:focus {
   color: #aaaaaa !important;
 }
+
 /*** Third level a ***/
 .sf-menu ul ul a {
   color: #cccccc;
 }
+
 .sf-menu ul ul a:hover,
 .sf-menu ul ul a:focus {
   color: #aaaaaa !important;
 }
+
 /*** First level li ***/
-.sf-menu > li {
+.sf-menu>li {
   /*background: #BDD2FF;*/
 }
-.sf-menu > li:hover > a {
+
+.sf-menu>li:hover>a {
   /*color: #676767;*/
 }
+
 /*** Second level li ***/
 .sf-menu ul li {
   background: #333333;
 }
+
 .sf-menu ul li:hover,
 .sf-menu ul li.sfHover {
   background: #3e3e3e;
 }
+
 /*** Third level li ***/
 .sf-menu ul ul li {
   background: #333333;
 }
+
 .sf-menu ul ul li:hover,
 .sf-menu ul ul li.sfHover {
   background: #3e3e3e;
 }
+
 /*** Levels li border top ***/
 .sf-menu ul li {
   border-top: 1px solid #494949;
 }
+
 .sf-menu ul ul li {
   border-top: 1px solid #494949;
 }
+
 .sf-menu ul li:first-child {
   border-top: 0;
 }
@@ -276,10 +491,6 @@
 /* Navbar desktop mas ajustes
 -------------------------------------------------- */
 
-.sf-menu > li:last-child > a {
+.sf-menu>li:last-child>a {
   padding-right: 0;
-}
-
-.jumbotron{
-  
 }

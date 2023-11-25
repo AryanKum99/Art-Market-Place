@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/6d5b2cec0a.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/auth.css">
+  <link rel="stylesheet" href="/styles/sculpture.css">
+  <title>ArtHarbour</title>
+</head>
+
+<body>
+  <div id="st-navbar-desktop-wrapper" class="st-navbar-desktop-wrapper st-navbar-desktop-fixed">
+    <%- include('./partials/navbar') %>
+  </div>
+  <div style="display: block;">
+    <!-- <h2 class="art-heading">Featured Sculptures</h2> -->
+  </div>
+  <section class="arts" id="art-list">
+    <div>
+      <% prods.forEach(function(Product){%>
+        <% if(Product.category==='Sculpture' ) {%>
+          <article>
+            <div class="row article-wrapper">
+              <div class="column card-div col-lg-4 mb-4">
+                <div class="article-body">
+                  <h2>
+                    <p>
+                      <%= Product.artName %>
+                    </p>
+                  </h2>
+                  <p>
+                  <p>
+                    <%= Product.description %>
+                  </p>
+                  <p>Sell Price: <%= Product.price %>
+                  </p>
+                  <p>Category: <%= Product.category %>
+                  </p>
+                  <p>Listed By/Artist: <%= Product.listedBy %>
+                  </p>
+                  <p>Created: <%= Product.creationDate %>
+                  </p>
+                  </p>
+                  <% } %>
+                    <!-- <a href="#" class="read-more"> -->
+                    <a href="/cart" class="appointment-btn scrollto"><span class="d-none d-md-inline">Add to</span>
+                      Cart</a></span>
+                </div>
+              </div>
+            </div>
+          </article>
+    </div>
+    <% }) %>
+  </section>
+</body>
+
+</html>

@@ -8,7 +8,7 @@ const productsSchema = new Schema({
     },
     description: String,
     price: {
-        type: String,
+        type: Number,
         required: true
     },
     category: {
@@ -17,7 +17,8 @@ const productsSchema = new Schema({
     },
     creationDate: {
         type: Date,
-        required: true
+        required: true,
+        default: Date.now()
     },
     listedBy: {
         type: String,
