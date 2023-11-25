@@ -58,7 +58,16 @@ app.get("/paintings", async (req, res) => {
   const prods = await Product.find({ category: "Painting" });
   res.render("paintings", { prods });
 });
-app.post('/paintings', )
+app.get('/paintings/add', (req, res) => {
+  res.render('paintings/addPainting');
+})
+app.post('/paintings/add', async (req, res) => {
+  console.log(req.body);
+  const art = new Product(req.body);
+  await art.save();
+  console.log('success');
+  res.redirect('paintings');
+})
 app.get("/sketches", async (req, res) => {
   const prods = await Product.find({ category: "Sketches" });
   res.render("sketches", { prods });
