@@ -8,19 +8,21 @@ const router = express.Router();
 router.get('/register', (req, res) => {
     res.render('user/register');
 });
-// router.post('/register', catchAsync(async (req, res) => {
-//     try {
-//         const { userEmail, userName, password } = req.body;
-//         const user = await User.findOne({userName:userName});
-//         const user2 = new User({ userEmail, userName });
-//         const registeredUser = await User.register(userName, password);
-//         req.flash('success', 'Welcome to ArtHarbour!');
-//         res.redirect('/')
-//     } catch (e) {
-//         req.flash('error', e.message);
-//         res.redirect('/register');
-//     }
-// }));
+router.post('/register', catchAsync(async (req, res) => {
+    try {
+        console.log(req.body);
+        const { userEmail, username, password } = req.body;
+        const user = new User({ userEmail, username });
+        const registeredUser = await User.register(user, password);
+        req.login(registeredUser, err => {
+            if (err) return next(err);
+            res.redirect('/');
+        })
+    } catch (e) {
+        console.log('error', e.message);
+        res.redirect('user/register');
+    }
+}));
 router.get('/login', (req, res) => {
     res.render('user/login');
 });
