@@ -14,8 +14,7 @@ db.once("open", () => {
 });
 const seedDB = async () => {
     await Product.deleteMany({});
-    for (let i = 0; i < 45; i++) {
-        const phnnum = Math.floor(Math.random() * 10000000);
+    for (let i = 0; i < 10; i++) {
         const products = new Product({
             artName: `${prods[i].artName}`,
             description: `${prods[i].description}`,
