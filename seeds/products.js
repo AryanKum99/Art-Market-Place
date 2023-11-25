@@ -6,7 +6,7 @@ module.exports.prods=[
         category: 'Painting',
         creationDate: '2023-01-15',
         listedBy: 'Artist123',
-        image: 'sunset_splendor.jpg',
+        image: 'painting1.jpg',
     },
     {
         artName: 'Abstract Harmony',
@@ -15,7 +15,7 @@ module.exports.prods=[
         category: 'Painting',
         creationDate: '2022-11-28',
         listedBy: 'CreativeMind',
-        image: 'abstract_harmony.jpg',
+        image: 'painting2.jpg',
     },
     {
         artName: 'Sculpture of Serenity',
@@ -24,7 +24,7 @@ module.exports.prods=[
         category: 'Sculpture',
         creationDate: '2023-02-05',
         listedBy: 'SculptorArtisan',
-        image: 'serenity_sculpture.jpg',
+        image: 'sculpture1.jpg',
     },
     {
         artName: 'Oceanic Dream',
@@ -33,7 +33,7 @@ module.exports.prods=[
         category: 'Painting',
         creationDate: '2023-03-10',
         listedBy: 'SeaDreamer',
-        image: 'oceanic_dream.jpg',
+        image: 'painting3.jpg',
     },
     {
         artName: 'Urban Reflections',
@@ -42,7 +42,7 @@ module.exports.prods=[
         category: 'Sketches',
         creationDate: '2022-12-18',
         listedBy: 'CityExplorer',
-        image: 'urban_reflections.jpg',
+        image: 'sketch1.jpg',
     },
     {
         artName: 'Whimsical Woodwork',
@@ -51,7 +51,7 @@ module.exports.prods=[
         category: 'Sketches',
         creationDate: '2023-01-02',
         listedBy: 'WoodArtisan',
-        image: 'whimsical_woodwork.jpg',
+        image: 'sketch2.jpg',
     },
     {
         artName: 'Ethereal Elegance',
@@ -60,7 +60,7 @@ module.exports.prods=[
         category: 'Painting',
         creationDate: '2023-02-20',
         listedBy: 'DigitalDreamer',
-        image: 'ethereal_elegance.jpg',
+        image: 'painting4.jpg',
     },
     {
         artName: 'Rustic Realism',
@@ -69,7 +69,7 @@ module.exports.prods=[
         category: 'Painting',
         creationDate: '2022-11-05',
         listedBy: 'RuralRealist',
-        image: 'rustic_realism.jpg',
+        image: 'painting5.jpg',
     },
     {
         artName: 'Cinematic Splendor',
@@ -78,7 +78,7 @@ module.exports.prods=[
         category: 'Sculptures',
         creationDate: '2023-03-05',
         listedBy: 'CinephileShutterbug',
-        image: 'cinematic_splendor.jpg',
+        image: 'sculpture2.jpg',
     },
     {
         artName: 'Whispering Winds',
@@ -87,7 +87,7 @@ module.exports.prods=[
         category: 'Painting',
         creationDate: '2023-01-28',
         listedBy: 'NatureWhisperer',
-        image: 'whispering_winds.jpg',
+        image: 'painting7.jpg',
     },
     {
         artName: 'Cerulean Serenade',
@@ -96,7 +96,7 @@ module.exports.prods=[
         category: 'Sculpture',
         creationDate: '2022-12-10',
         listedBy: 'CeramicArtisan',
-        image: 'cerulean_serenade.jpg',
+        image: 'sculpture3.jpg',
     },
     {
         artName: 'Galactic Vision',
@@ -105,7 +105,7 @@ module.exports.prods=[
         category: 'Sketches',
         creationDate: '2023-02-15',
         listedBy: 'CosmicDreamer',
-        image: 'galactic_vision.jpg',
+        image: 'sketch3.jpg',
     },
     {
         artName: 'Enchanting Engravings',
@@ -114,7 +114,7 @@ module.exports.prods=[
         category: 'Sculpture',
         creationDate: '2023-03-20',
         listedBy: 'EngravingArtisan',
-        image: 'enchanting_engravings.jpg',
+        image: 'sculpture4.jpg',
     },
     {
         artName: 'Vibrant Vistas',
@@ -123,7 +123,7 @@ module.exports.prods=[
         category: 'Painting',
         creationDate: '2023-01-12',
         listedBy: 'ColorfulCanvas',
-        image: 'vibrant_vistas.jpg',
+        image: 'painting6.jpg',
     },
     {
         artName: 'Whimsical Watercolors',
@@ -132,7 +132,7 @@ module.exports.prods=[
         category: 'Painting',
         creationDate: '2022-12-28',
         listedBy: 'WatercolorDreamer',
-        image: 'whimsical_watercolors.jpg',
+        image: 'painting8.jpg',
     },
     {
         artName: 'Astral Abstractions',
@@ -141,7 +141,7 @@ module.exports.prods=[
         category: 'Sketches',
         creationDate: '2023-02-28',
         listedBy: 'AstralArtisan',
-        image: 'astral_abstractions.jpg',
+        image: 'sketch4.jpg',
     },
     {
         artName: 'Rustic Reflections',
@@ -150,7 +150,7 @@ module.exports.prods=[
         category: 'Sketches',
         creationDate: '2023-03-15',
         listedBy: 'RuralExplorer',
-        image: 'rustic_reflections.jpg',
+        image: 'sketch5.jpg',
     },
     {
         artName: 'Celestial Ceramics',
@@ -159,7 +159,7 @@ module.exports.prods=[
         category: 'Sculpture',
         creationDate: '2023-01-20',
         listedBy: 'CelestialArtisan',
-        image: 'celestial_ceramics.jpg',
+        image: 'sculpture5.jpg',
     },
     {
         artName: 'Mystical Murals',
@@ -168,6 +168,6 @@ module.exports.prods=[
         category: 'Sculpture',
         creationDate: '2022-11-15',
         listedBy: 'MuralistMaster',
-        image: 'mystical_murals.jpg',
+        image: 'sculpture6.jpg',
     }
 ];

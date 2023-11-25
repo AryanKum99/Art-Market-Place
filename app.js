@@ -53,15 +53,27 @@ app.get("/", async (req, res) => {
     const prod = await Product.find({});
     res.render("home", { prod });
   });
-  app.get("/paintings", async (req, res) => {
-    const selectedCategory = req.query.category;
+//   app.get("/paintings", async (req, res) => {
+//     const selectedCategory = req.query.category;
   
-    try {
-      const products = await Product.find({ category: selectedCategory });
-      console.log(products);
-      res.json(products);
-    } catch (error) {
-      console.error("Error fetching Arts:", error);
-      res.status(500).json({ error: "An error occurred while fetching Arts" });
-    }
+//     try {
+//       const products = await Product.find({ category: selectedCategory });
+//       console.log(products);
+//       res.json(products);
+//     } catch (error) {
+//       console.error("Error fetching Arts:", error);
+//       res.status(500).json({ error: "An error occurred while fetching Arts" });
+//     }
+//   });
+  app.get("/paintings", async (req, res) => {
+    const prods = await Product.find({ category: "Painting" });
+    res.render("paintings", { prods });
+  });
+  app.get("/sketches", async (req, res) => {
+    const prods = await Product.find({ category: "Sketches" });
+    res.render("sketches", { prods });
+  });
+  app.get("/sculptures", async (req, res) => {
+    const prods = await Product.find({ category: "Sculpture" });
+    res.render("sculptures", { prods });
   });
