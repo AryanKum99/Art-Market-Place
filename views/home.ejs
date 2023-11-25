@@ -1,60 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/styles/main.css">
-  <link rel="stylesheet" href="/styles/auth.css">
-  <title>ArtHarbour</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6d5b2cec0a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/auth.css">
+    <title>ArtHarbour</title>
 </head>
 
 <body>
-  <div id="st-navbar-desktop-wrapper" class="st-navbar-desktop-wrapper st-navbar-desktop-fixed">
-    <div class="st-navbar-desktop">
-      <div class="container">
-        <div class="st-navbar-desktop-logo">
-          <a class="st-navbar-desktop-logo-link" title="Logo" href="/"><img
-              src="https://www.smoothemes.es/media/logos/smoothemes-logo.svg"></a>
+      <div id="st-navbar-desktop-wrapper" class="st-navbar-desktop-wrapper st-navbar-desktop-fixed">
+        <div class="st-navbar-desktop">
+          <div class="container">
+            <div class="st-navbar-desktop-logo">
+              <a class="st-navbar-desktop-logo-link" title="Logo" href="/"><img src="https://www.smoothemes.es/media/logos/smoothemes-logo.svg"></a>
+            </div>
+            <nav class="st-navbar-desktop-menu" role="navigation">
+              <ul id="st-navbar-desktop-menu-nav" class="sf-menu">
+                <li><a href="/paintings">Paintings</a></li>
+                <li><a href="#">Sketches</a></li>
+                <li><a href="#">Sculptures</a></li>
+                <li><a href="#">Artists</a></li>
+                <li><a href="/cart"><li><a class="nav-link" href="/cart"><i class="fa-light fa-cart-shopping fa-lg"></i></a></li></a></li>
+                </ul>
+              </ul>
+            </nav>
+          </div>
         </div>
-        <nav class="st-navbar-desktop-menu" role="navigation">
-          <ul id="st-navbar-desktop-menu-nav" class="sf-menu">
-            <li><a href="#">Paintings</a></li>
-            <li><a href="#">Sketches</a></li>
-            <li><a href="#">Sculptures</a></li>
-            <li><a href="#">Artists</a></li>
-            <li><a href="#">Contacto</a></li>
-
-            <li><a class="nav-link scrollto" href="#contacts">Contact Us</a></li>
-          </ul>
-          </ul>
-        </nav>
+      </div>  
+      <div class="container" style="margin-top:110px;">
+        <div class="jumbotron">
+          <h2>Featured Paintings</h2>
+        </div>
+        <section>
+          <div class="product">
+              <h2>Product Name 1</h2>
+              <p>Description of Product 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>Price: $19.99</p>
+              <button>Add to Cart</button>
+          </div>
+  
+          <div class="product">
+              <h2>Product Name 2</h2>
+              <p>Description of Product 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+              <p>Price: $29.99</p>
+              <button>Add to Cart</button>
+          </div>
+  
+          <!-- Add more products as needed -->
+  
+      </section>
       </div>
-    </div>
-  </div>
-
-
-  <div class="container" style="margin-top:110px;">
-    <div class="jumbotron">
-      <h2>Navbar bootstrap superfish</h2>
-      <p>Utilizando la navbar de <a href="https://getbootstrap.com/" target="_blank">bootstrap</a>, le añadimos el
-        plugin de navbars <a href="https://users.tpg.com.au/j_birch/plugins/superfish/" target="_blank">superfish</a> y
-        mejoramos sus eventos con <a href="http://cherne.net/brian/resources/jquery.hoverIntent.html"
-          target="_blank">hoverIntent</a>.</p>
-    </div>
-  </div>
-
-  <div class="container" style="height:460px;"></div>
-  <h1>Home page</h1>
-  <form action="/user/login" method="get">
-    <button>login</button>
-  </form>
-  <form action="/user/register" method="get">
-    <button>register</button>
-  </form>
-  <form action="/user/logout" method="post">
-    <button>logout</button>
-  </form>
 
 
 </body>

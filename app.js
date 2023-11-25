@@ -8,6 +8,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const userRoutes = require('./routes/user');
 const passport = require('passport');
 const User = require('./models/userModel');
+const Product = require("./models/productModel");
 const LocalStrategy = require('passport-local');
 app.engine('ejs', ejsMate);
 const session = require('express-session');
@@ -34,7 +35,6 @@ app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-
 // app.use((req, res, next) => {
 //     res.locals.currentUser = req.user;
 //     res.locals.success = req.flash('success');
@@ -42,10 +42,26 @@ passport.deserializeUser(User.deserializeUser());
 //     next();
 // })
 
-app.get('/', (req, res) => {
-    res.render('home');
-})
+// app.get('/', (req, res) => {
+//     res.render('home');
+// })
 
 app.use('/user', userRoutes);
 
 module.exports = app;
+app.get("/", async (req, res) => {
+    const prod = await Product.find({});
+    res.render("home", { prod });
+  });
+  app.get("/paintings", async (req, res) => {
+    const selectedCategory = req.query.category;
+  
+    try {
+      const products = await Product.find({ category: selectedCategory });
+      console.log(products);
+      res.json(products);
+    } catch (error) {
+      console.error("Error fetching Arts:", error);
+      res.status(500).json({ error: "An error occurred while fetching Arts" });
+    }
+  });
