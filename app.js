@@ -15,6 +15,7 @@ const session = require('express-session');
 const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 const flash = require('connect-flash');
+const { isLoggedIn } = require('./middleware/middleware');
 app.set('view engine', 'ejs');
 app.engine('ejs', ejsMate);
 app.set('views', path.join(__dirname, 'views'));
@@ -57,7 +58,7 @@ app.get("/paintings", async (req, res, next) => {
   const prods = await Product.find({ category: "Painting" });
   res.render("paintings", { prods });
 });
-app.get('/paintings/add', (req, res) => {
+app.get('/paintings/add', isLoggedIn, (req, res) => {
   console.log(req.user);
   res.render('paintings/addPainting');
 })
@@ -69,7 +70,7 @@ app.get('/paintings/add', (req, res) => {
 // bestSellers: [],
 // __v: 0
 
-app.post('/paintings/add', catchAsync(async (req, res) => {
+app.post('/paintings/add', isLoggedIn, catchAsync(async (req, res) => {
   console.log(req.body);
   const art = new Product(req.body);
   art.listedBy = req.user.username;
@@ -77,20 +78,20 @@ app.post('/paintings/add', catchAsync(async (req, res) => {
   console.log('success');
   res.redirect('paintings');
 }));
-app.get("/sketches", catchAsync(async (req, res) => {
+app.get("/sketches", isLoggedIn, catchAsync(async (req, res) => {
   const prods = await Product.find({ category: "Sketches" });
   res.render("sketches", { prods });
 }));
-app.get("/sculptures", catchAsync(async (req, res) => {
+app.get("/sculptures", isLoggedIn, catchAsync(async (req, res) => {
   const prods = await Product.find({ category: "Sculpture" });
   res.render("sculptures", { prods });
 }));
-app.get('/api/cart', catchAsync(async (req, res) => {
+app.get('/api/cart', isLoggedIn, catchAsync(async (req, res) => {
   const items = await CartItem.find();
   res.render('cart');
 }));
 
-app.post('/api/cart', catchAsync(async (req, res) => {
+app.post('/api/cart', isLoggedIn, catchAsync(async (req, res) => {
   const { product, price } = req.body;
   console.log(req.body);
   const newItem = new CartItem({ product, price });

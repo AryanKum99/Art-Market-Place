@@ -1,7 +1,7 @@
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl;
-        // req.flash("error", "You must be signed in!!");
+        req.flash("error", "You must be signed in!! You can access the gallery meanwhile!");
         console.log('error');
         return res.redirect('/user/login');
     }
