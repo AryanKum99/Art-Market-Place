@@ -1,11 +1,11 @@
-module.exports.prods=[
+module.exports.prods = [
     {
         artName: 'Sunset Splendor',
         description: 'A breathtaking painting capturing the beauty of a sunset over the mountains.',
         price: 350.00,
         category: 'Painting',
         creationDate: '2023-01-15',
-        listedBy: 'Artist123',
+        listedBy: 'tim',
         image: 'painting1.jpg',
     },
     {
@@ -14,7 +14,7 @@ module.exports.prods=[
         price: 180.00,
         category: 'Painting',
         creationDate: '2022-11-28',
-        listedBy: 'CreativeMind',
+        listedBy: 'tim',
         image: 'painting2.jpg',
     },
     {
@@ -23,7 +23,7 @@ module.exports.prods=[
         price: 500.00,
         category: 'Sculpture',
         creationDate: '2023-02-05',
-        listedBy: 'SculptorArtisan',
+        listedBy: 'tim',
         image: 'sculpture1.jpg',
     },
     {
@@ -32,7 +32,7 @@ module.exports.prods=[
         price: 280.00,
         category: 'Painting',
         creationDate: '2023-03-10',
-        listedBy: 'SeaDreamer',
+        listedBy: 'tim',
         image: 'painting3.jpg',
     },
     {
@@ -41,7 +41,7 @@ module.exports.prods=[
         price: 120.00,
         category: 'Sketches',
         creationDate: '2022-12-18',
-        listedBy: 'CityExplorer',
+        listedBy: 'tim',
         image: 'sketch1.jpg',
     },
     {
@@ -50,7 +50,7 @@ module.exports.prods=[
         price: 220.00,
         category: 'Sketches',
         creationDate: '2023-01-02',
-        listedBy: 'WoodArtisan',
+        listedBy: 'tim',
         image: 'sketch2.jpg',
     },
     {
@@ -59,7 +59,7 @@ module.exports.prods=[
         price: 150.00,
         category: 'Painting',
         creationDate: '2023-02-20',
-        listedBy: 'DigitalDreamer',
+        listedBy: 'tim',
         image: 'painting4.jpg',
     },
     {
@@ -68,7 +68,7 @@ module.exports.prods=[
         price: 300.00,
         category: 'Painting',
         creationDate: '2022-11-05',
-        listedBy: 'RuralRealist',
+        listedBy: 'tim',
         image: 'painting5.jpg',
     },
     {
@@ -77,7 +77,7 @@ module.exports.prods=[
         price: 200.00,
         category: 'Sculptures',
         creationDate: '2023-03-05',
-        listedBy: 'CinephileShutterbug',
+        listedBy: 'tim',
         image: 'sculpture2.jpg',
     },
     {
@@ -86,7 +86,7 @@ module.exports.prods=[
         price: 160.00,
         category: 'Painting',
         creationDate: '2023-01-28',
-        listedBy: 'NatureWhisperer',
+        listedBy: 'tim',
         image: 'painting7.jpg',
     },
     {
@@ -95,7 +95,7 @@ module.exports.prods=[
         price: 450.00,
         category: 'Sculpture',
         creationDate: '2022-12-10',
-        listedBy: 'CeramicArtisan',
+        listedBy: 'smdtp',
         image: 'sculpture3.jpg',
     },
     {
@@ -104,7 +104,7 @@ module.exports.prods=[
         price: 180.00,
         category: 'Sketches',
         creationDate: '2023-02-15',
-        listedBy: 'CosmicDreamer',
+        listedBy: 'smdtp',
         image: 'sketch3.jpg',
     },
     {
@@ -113,7 +113,7 @@ module.exports.prods=[
         price: 250.00,
         category: 'Sculpture',
         creationDate: '2023-03-20',
-        listedBy: 'EngravingArtisan',
+        listedBy: 'smdtp',
         image: 'sculpture4.jpg',
     },
     {
@@ -122,7 +122,7 @@ module.exports.prods=[
         price: 280.00,
         category: 'Painting',
         creationDate: '2023-01-12',
-        listedBy: 'ColorfulCanvas',
+        listedBy: 'smdtp',
         image: 'painting6.jpg',
     },
     {
@@ -131,7 +131,7 @@ module.exports.prods=[
         price: 130.00,
         category: 'Painting',
         creationDate: '2022-12-28',
-        listedBy: 'WatercolorDreamer',
+        listedBy: 'smdtp',
         image: 'painting8.jpg',
     },
     {
@@ -140,7 +140,7 @@ module.exports.prods=[
         price: 200.00,
         category: 'Sketches',
         creationDate: '2023-02-28',
-        listedBy: 'AstralArtisan',
+        listedBy: 'smdtp',
         image: 'sketch4.jpg',
     },
     {
@@ -149,7 +149,7 @@ module.exports.prods=[
         price: 150.00,
         category: 'Sketches',
         creationDate: '2023-03-15',
-        listedBy: 'RuralExplorer',
+        listedBy: 'smdtp',
         image: 'sketch5.jpg',
     },
     {
@@ -158,7 +158,7 @@ module.exports.prods=[
         price: 350.00,
         category: 'Sculpture',
         creationDate: '2023-01-20',
-        listedBy: 'CelestialArtisan',
+        listedBy: 'smdtp',
         image: 'sculpture5.jpg',
     },
     {
@@ -167,7 +167,7 @@ module.exports.prods=[
         price: 500.00,
         category: 'Sculpture',
         creationDate: '2022-11-15',
-        listedBy: 'MuralistMaster',
+        listedBy: 'smdtp',
         image: 'sculpture6.jpg',
     }
 ];

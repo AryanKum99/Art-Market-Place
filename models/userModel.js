@@ -19,6 +19,13 @@ const usersSchema = new Schema({
         type: Number
     },
     bestSellers: Array,
+    hasACart: {
+        type: Boolean
+    },
+    isSeller: {
+        type: Boolean,
+        default: false
+    }
 });
 usersSchema.plugin(passportLocalMongoose);
 module.exports = mongoose.model('User', usersSchema);

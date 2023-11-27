@@ -13,7 +13,8 @@ const CartItemSchema = new Schema({
         default: 'Not processed',
         enum: ['Not processed', 'Processing', 'Shipped', 'Delivered', 'Cancelled']
     },
-    price: Number
+    price: Number,
+    username: String
 });
 
 

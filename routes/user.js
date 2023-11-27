@@ -15,6 +15,7 @@ router.post('/register', catchAsync(async (req, res) => {
         console.log(req.body);
         const { userEmail, username, password } = req.body;
         const user = new User({ userEmail, username });
+        
         const registeredUser = await User.register(user, password);
         req.login(registeredUser, err => {
             if (err) return next(err);

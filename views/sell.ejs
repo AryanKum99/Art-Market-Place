@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/6d5b2cec0a.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Sans&family=Montserrat:wght@600&family=Tilt+Prism&family=Ubuntu&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Tilt+Prism&family=Ubuntu&display=swap"
+        rel="stylesheet">
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/6d5b2cec0a.js" crossorigin="anonymous"></script>
+    <!-- bootstrap and js -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/painting.css">
+    <link rel="stylesheet" href="/styles/navbar.css">
+    <link rel="stylesheet" href="/styles/cart.css">
+    <link rel="stylesheet" href="/styles/sell.css">
+    <title>ArtHarbour</title>
+</head>
+
+<body style="background-image: none;">
+    <%- include('./partials/flash')%>
+        <div id="st-navbar-desktop-wrapper" class="st-navbar-desktop-wrapper st-navbar-desktop-fixed">
+            <%- include('./partials/navbar') %>
+        </div>
+        <section style="margin: 120px;">
+            <div>
+                <h1 class="top-heading">Share your creativity with the world today!</h1>
+                <div class="heading">
+                    <h3 class="top-heading" style="color: #164B60;">Fill the details below:</h3>
+                </div>
+
+                <div class="dept">
+                    <form method="post" action="/sell">
+                        <table id="appt-table" class="table">
+                            <tr class="trow">
+                                <td>
+                                    <label for="artName">Name of your masterpiece: </label>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <input class="form-control" type="text" id="artName" name="artName" required>
+                                    </h4>
+                                </td>
+                            </tr>
+                            <tr class="trow">
+                                <td>
+                                    <label for="description">What makes your masterpiece unique? </label>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <input class="form-control" type="text" id="description" name="description"
+                                            required>
+                                    </h4>
+                                </td>
+                            </tr>
+                            <tr class="trow">
+                                <td><label for="category">Select Category: </label></td>
+                                <td><select name="category" id="category">
+                                        <option value="">--Choose category--</option>
+                                        <option value="Painting">Painting</option>
+                                        <option value="Sketches">Sketches</option>
+                                        <option value="Sculpture">Sculpture</option>
+                                    </select></td>
+                            </tr>
+                            <tr>
+                            <tr class="trow">
+                                <td>
+                                    <label for="price">Price: </label>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <input class=" form-control" type="number" id="price" name="price" required>
+                                    </h4>
+                                </td>
+                            </tr>
+                            <tr class="trow">
+                                <td><label>Date of Creation of this Masterpiece: </label></td>
+                                <td>
+                                    <h4>
+                                        <input type="datetime-local" name="creationDate" id="creationDate">
+                                    </h4>
+                                </td>
+                                <!-- </tr>
+                            <tr class="trow">
+                                <td>
+                                    <label for="name">Your Preferred Name: </label>
+                                </td>
+                                <td>
+                                    <h4>
+                                        <input class="form-control" type="text" id="listedBy" name="listedBy" required>
+                                    </h4>
+                                </td>
+                            </tr>
+                            <tr class="trow">
+                                <td>
+                                    <label for="name">Upload your Masterpiece: </label>
+                                </td>
+                                <td>
+                                    <canvas id="space">
+
+                                    </canvas> -->
+
+                                <!-- <div id="buttons">
+                                    <input type="file" multiple="false" accept="image/*" id="finput"
+                                        onchange="upload()">
+                                    </td>
+                            </tr> -->
+                            </tr>
+                        </table>
+                        <div class="lg-6">
+                            <button class="btn-primary btn-lg history-btn1">Submit</button>
+                        </div>
+                        <div class="lg-6">
+                        </div>
+                    </form>
+                </div>
+        </section>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+            integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+            integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+            crossorigin="anonymous"></script>
+        <script src="sell.js"></script>
+</body>
+
+
+</html>

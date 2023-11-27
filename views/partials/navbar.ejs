@@ -14,25 +14,25 @@
             </div>
             <div class="right">
                 <ul>
-                    <li><a href="#">Buy</a></li>
-                    <li><a href="#">Sell</a></li>
-                    <li><a href="/cart"><span><i class="shopping-cart"></i></span></a></li>
+                    <li><a href="/buy" style="text-decoration: none;">Buy</a></li>
+                    <li><a href="/sell" style="text-decoration: none;">Sell</a></li>
+                    <li><a href="/cart"><span><i class="fa-solid fa-cart-shopping"></i></span></a></li>
                     <% if(!currentUser) {%>
-                        <li><a href="/user/login"></a>Login</li>
-                        <li><a href="/user/register"></a>SignUp</li>
+                        <li><a href="/user/login" style="text-decoration: none;">Login</a></li>
+                        <li><a href="/user/register" style="text-decoration: none;">Signup</a></li>
                         <% } else {%>
-                            <li><a href="/user/logout"></a>Logout</li>
+                            <li><a href="/user/logout" style="text-decoration: none;">Logout</a></li>
                             <% } %>
                 </ul>
             </div>
         </div>
         <div class="bottom-nav">
             <ul>
-                <li><a href="/paintings">Paintings</a></li>
-                <li><a href="/sculptures">Sculptures</a></li>
-                <li><a href="/sketches">Sketches</a></li>
-                <li><a href="/artists">Artists</a></li>
-                <li><a href="/gallery">Galleries</a></li>
+                <li><a href="/paintings" style="text-decoration: none;">Paintings</a></li>
+                <li><a href="/sculptures" style="text-decoration: none;">Sculptures</a></li>
+                <li><a href="/sketches" style="text-decoration: none;">Sketches</a></li>
+                <li><a href="/artists" style="text-decoration: none;">Artists</a></li>
+                <li><a href="/gallery" style="text-decoration: none;">Galleries</a></li>
             </ul>
         </div>
         <!-- <div class="banner">

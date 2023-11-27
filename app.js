@@ -58,26 +58,29 @@ app.get("/paintings", async (req, res, next) => {
   const prods = await Product.find({ category: "Painting" });
   res.render("paintings", { prods });
 });
-app.get('/paintings/add', isLoggedIn, (req, res) => {
+app.get('/sell', isLoggedIn, (req, res) => {
   console.log(req.user);
-  res.render('paintings/addPainting');
+  res.render('sell');
 })
 
-//req.user gives
-//_id: new ObjectId('65623a8093c3b7ce769419b1'),
-//username: 'tim',
-// userEmail: 'akum23@fj.com',
-// bestSellers: [],
-// __v: 0
-
-app.post('/paintings/add', isLoggedIn, catchAsync(async (req, res) => {
+app.post('/sell', isLoggedIn, catchAsync(async (req, res) => {
   console.log(req.body);
   const art = new Product(req.body);
   art.listedBy = req.user.username;
   await art.save();
+  await User.findOneAndUpdate({ username: req.user.username }, {
+    $set: {
+      isSeller: true
+    }
+  });
   console.log('success');
   res.redirect('paintings');
 }));
+
+app.get('/buy', isLoggedIn, (req, res) => {
+  res.redirect('/paintings');
+})
+
 app.get("/sketches", isLoggedIn, catchAsync(async (req, res) => {
   const prods = await Product.find({ category: "Sketches" });
   res.render("sketches", { prods });
@@ -101,9 +104,10 @@ app.post('/api/cart', isLoggedIn, catchAsync(async (req, res) => {
 app.get("/gallery", catchAsync(async (req, res) => {
   res.render("gallery");
 }));
-app.get("/artist", catchAsync(async (req, res) => {
-  const artists = await Product.findAll();
-  res.render("artists", { listedBy });
+app.get("/artists", catchAsync(async (req, res) => {
+  const artists = await User.find({ isSeller: true });
+  console.log(artists);
+  res.render("artists", { artists });
 }));
 //login -> sell -> usermodel: isSeller: true -> User.findAll(isSeller:true)
 app.all('*', (req, res, next) => {
