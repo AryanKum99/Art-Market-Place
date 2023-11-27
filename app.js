@@ -88,3 +88,6 @@ app.post('/api/cart', async (req, res) => {
   await newItem.save();
   res.status(201).json(newItem);
 });
+app.get("/gallery", async (req, res) => {
+  res.render("gallery");
+});
