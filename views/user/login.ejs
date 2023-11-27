@@ -31,58 +31,16 @@
 </head>
 
 <body>
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="container d-flex align-items-center">
-      <a href="#" class="logo me-auto"><img src="" alt="" class="img-fluid"></a>
-      <h2 class="logo me-auto"><a href="/">ArtHarbour</a></h2>
-
-      <nav id="navbar" class="navbar order-last order-lg-0">
-
-        <ul>
-          <li><a class="nav-link scrollto active" href="/">Paintings</a></li>
-          <li><a class="nav-link scrollto" href="#">Drawings</a></li>
-          <li><a class="nav-link scrollto" href="#">Sculptures</a></li>
-          <li><a class="nav-link scrollto" href="#">Artists</a></li>
-
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-    </div>
-  </header><!-- End Header -->
-  <div class="heading">
-    <h2>Featured Paintings</h2>
-  </div>
-  <h3 class="auth-heading" style="color: #164B60;">Please Login To Access All Functionalities!</h3>
-  <div class="auth-div">
-    <div class="card" style="height: 450px; ">
-      <div class="card-body">
-        <form action="/user/login" method="POST" class="validated-form" novalidate>
-          <div class="input">
-            <label class="form-label" for="username">Enter you Email-Id:</label>
-            <input class="form-control" type="email" id="email" name="email" required
-              style="font-size: medium; height:fit-content;">
-
-            <div class="valid-feedback">
-              <h5>Looks good!</h5>
-            </div>
-            <label class="form-label" for="password">Enter Password:</label>
-            <input class="form-control" type="password" id="password" name="password" required
-              style="font-size: medium;">
-            <div class="valid-feedback">
-              <h5>Looks good!</h5>
-            </div>
-          </div>
-          <div class="login-btn">
-            <button class="btn btn-success btn-lg" id="button">Login</button>
-          </div>
+  <%- include('../partials/flash')%>
+    <div class="login-page">
+      <div class="form">
+        <form class="login-form" method="post" action="/user/login">
+          <input type="text" name="username" id="username" placeholder="username" />
+          <input type="password" name="password" id="password" placeholder="password" />
+          <button>login</button>
+          <p class="message">Not registered? <a href="/user/register">Create an account</a></p>
         </form>
-        <p style="font-size: 20px">New User?
-          <a href="/user/register">SignUp</a>
-        </p>
-
       </div>
     </div>
-  </div>
-  </div>
+    <script src="auth.js"></script>
 </body>

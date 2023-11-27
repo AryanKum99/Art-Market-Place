@@ -1,38 +1,43 @@
 <div class="st-navbar-desktop">
-    <div class="container">
-        <div class="wrapper">
-            <div class="multi_color_border"></div>
-            <div class="top_nav">
-                <div class="left">
-                    <div class="logo">
-                        <a class="st-navbar-desktop-logo-link" title="Logo" href="/"><p><span>ArtHub</span></p></a>
-                    </div>
-                    <div class="search_bar">
-                        <input type="text" placeholder="Search">
-                    </div>
+    <div class="wrapper">
+        <div class="multi_color_border"></div>
+        <div class="top_nav">
+            <div class="left">
+                <div class="logo">
+                    <a class="st-navbar-desktop-logo-link" title="Logo" href="/">
+                        <p><span>ArtHub</span></p>
+                    </a>
                 </div>
-                <div class="right">
-                    <ul>
-                        <li><a href="#">Buy</a></li>
-                        <li><a href="#">Sell</a></li>
-                        <li><a href="/cart"><span><i class="shopping-cart"></i></span></a></li>
-                        <li><a href="#"></a>Login/Signup</li>
-                    </ul>
+                <div class="search_bar">
+                    <input type="text" placeholder="Search">
                 </div>
             </div>
-            <div class="bottom-nav">
+            <div class="right">
                 <ul>
-                    <li><a href="/paintings">Paintings</a></li>
-                    <li><a href="/sculptures">Sculptures</a></li>
-                    <li><a href="/sketches">Sketches</a></li>
-                    <li><a href="/artists">Artists</a></li>
-                    <li><a href="/gallery">Galleries</a></li>
+                    <li><a href="#">Buy</a></li>
+                    <li><a href="#">Sell</a></li>
+                    <li><a href="/cart"><span><i class="shopping-cart"></i></span></a></li>
+                    <% if(!currentUser) {%>
+                        <li><a href="/user/login"></a>Login</li>
+                        <li><a href="/user/register"></a>SignUp</li>
+                        <% } else {%>
+                            <li><a href="/user/logout"></a>Logout</li>
+                            <% } %>
                 </ul>
             </div>
-            <!-- <div class="banner">
+        </div>
+        <div class="bottom-nav">
+            <ul>
+                <li><a href="/paintings">Paintings</a></li>
+                <li><a href="/sculptures">Sculptures</a></li>
+                <li><a href="/sketches">Sketches</a></li>
+                <li><a href="/artists">Artists</a></li>
+                <li><a href="/gallery">Galleries</a></li>
+            </ul>
+        </div>
+        <!-- <div class="banner">
                 <img src="../images/homePage.jpg" alt="">
             </div> -->
-        </div>
         <!-- <div class="st-navbar-desktop-logo">
             <a class="st-navbar-desktop-logo-link" title="Logo" href="/" style="margin-left: 90px;">ArtHub</a>
         </div>

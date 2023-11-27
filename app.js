@@ -11,9 +11,12 @@ const User = require('./models/userModel');
 const Product = require("./models/productModel");
 const CartItem = require('./models/cartModel');
 const LocalStrategy = require('passport-local');
-app.engine('ejs', ejsMate);
 const session = require('express-session');
+const catchAsync = require('./utils/catchAsync');
+const ExpressError = require('./utils/ExpressError');
+const flash = require('connect-flash');
 app.set('view engine', 'ejs');
+app.engine('ejs', ejsMate);
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
@@ -33,61 +36,82 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
-// app.use((req, res, next) => {
-//     res.locals.currentUser = req.user;
-//     res.locals.success = req.flash('success');
-//     res.locals.error = req.flash('error');
-//     next();
-// })
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  next();
+})
 
-// app.get('/', (req, res) => {
-//     res.render('home');
-// })
+app.get('/', (req, res) => {
+  res.render('home');
+});
 
 app.use('/user', userRoutes);
 
-module.exports = app;
-app.get("/", async (req, res) => {
-  const prod = await Product.find({});
-  res.render("home", { prod });
-});
-app.get("/paintings", async (req, res) => {
+app.get("/paintings", async (req, res, next) => {
   const prods = await Product.find({ category: "Painting" });
   res.render("paintings", { prods });
 });
 app.get('/paintings/add', (req, res) => {
+  console.log(req.user);
   res.render('paintings/addPainting');
 })
-app.post('/paintings/add', async (req, res) => {
+
+//req.user gives
+//_id: new ObjectId('65623a8093c3b7ce769419b1'),
+//username: 'tim',
+// userEmail: 'akum23@fj.com',
+// bestSellers: [],
+// __v: 0
+
+app.post('/paintings/add', catchAsync(async (req, res) => {
   console.log(req.body);
   const art = new Product(req.body);
+  art.listedBy = req.user.username;
   await art.save();
   console.log('success');
   res.redirect('paintings');
-})
-app.get("/sketches", async (req, res) => {
+}));
+app.get("/sketches", catchAsync(async (req, res) => {
   const prods = await Product.find({ category: "Sketches" });
   res.render("sketches", { prods });
-});
-app.get("/sculptures", async (req, res) => {
+}));
+app.get("/sculptures", catchAsync(async (req, res) => {
   const prods = await Product.find({ category: "Sculpture" });
   res.render("sculptures", { prods });
-});
-app.get('/api/cart', async (req, res) => {
+}));
+app.get('/api/cart', catchAsync(async (req, res) => {
   const items = await CartItem.find();
   res.render('cart');
-});
+}));
 
-app.post('/api/cart', async (req, res) => {
+app.post('/api/cart', catchAsync(async (req, res) => {
   const { product, price } = req.body;
   console.log(req.body);
   const newItem = new CartItem({ product, price });
   await newItem.save();
   res.status(201).json(newItem);
-});
-app.get("/gallery", async (req, res) => {
+}));
+app.get("/gallery", catchAsync(async (req, res) => {
   res.render("gallery");
-});
+}));
+app.get("/artist", catchAsync(async (req, res) => {
+  const artists = await Product.findAll();
+  res.render("artists", { listedBy });
+}));
+//login -> sell -> usermodel: isSeller: true -> User.findAll(isSeller:true)
+app.all('*', (req, res, next) => {
+  next(new ExpressError('Page Not Found', 404))
+})
+app.use((err, req, res, next) => {
+  const { statusCode = 500 } = err;
+  if (!err.message) err.message = 'Oh No, Something Went Wrong!'
+  res.status(statusCode).render('error', { err })
+})
+
+module.exports = app;
