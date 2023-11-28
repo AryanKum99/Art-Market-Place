@@ -6,6 +6,23 @@ canvas{
   }
   
   .input{
-    font-size: 20px;
+    font-size: 50px;
     font-family: Georgia;
+  }
+  .top-heading{
+    padding: 10px 5px;
+    text-align: center;
+  }
+  .table{
+    align-items: center;
+    padding-top: 15px;
+    padding-left: 35%;
+    font-size: larger;
+  }
+  .trow{
+    padding: 10px 5px;
+  }
+  .label-font{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
   }

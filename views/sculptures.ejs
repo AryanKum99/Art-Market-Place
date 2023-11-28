@@ -65,7 +65,9 @@
               <p>Created: <%= Product.creationDate %>
               </p>
               </p>
-              <button class="add-to-cart" type="button">Add to cart</button>
+              <form action="/cart/add/<%= Product._id %>" method="post"><button class="add-to-cart" type="submit">Add to
+                cart</button>
+            </form>
             </div>
             <% } %>
         </div>
