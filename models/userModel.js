@@ -16,15 +16,21 @@ const usersSchema = new Schema({
         type: Number
     },
     numberArtListed: {
-        type: Number
+        type: Number,
+        default: 0
     },
     bestSellers: Array,
-    hasACart: {
-        type: Boolean
-    },
     isSeller: {
         type: Boolean,
         default: false
+    },
+    cart: {
+        type: [String],
+        default: []
+    },
+    cartTotal:{
+        type: Number,
+        default: 0
     }
 });
 usersSchema.plugin(passportLocalMongoose);

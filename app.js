@@ -56,6 +56,7 @@ app.use('/user', userRoutes);
 
 app.get("/paintings", async (req, res, next) => {
   const prods = await Product.find({ category: "Painting" });
+  console.log({prods});
   res.render("paintings", { prods });
 });
 app.get('/sell', isLoggedIn, (req, res) => {
@@ -89,18 +90,33 @@ app.get("/sculptures", isLoggedIn, catchAsync(async (req, res) => {
   const prods = await Product.find({ category: "Sculpture" });
   res.render("sculptures", { prods });
 }));
-app.get('/api/cart', isLoggedIn, catchAsync(async (req, res) => {
-  const items = await CartItem.find();
-  res.render('cart');
+
+// app.get('/addToCart', isLoggedIn, catchAsync(async(req,res)=>{
+//   const 
+// }))
+
+
+app.get('/cart', isLoggedIn, catchAsync(async (req, res) => {
+  const { cart } = await User.find({ username: req.user.username });
+  res.send(cart);
 }));
 
-app.post('/api/cart', isLoggedIn, catchAsync(async (req, res) => {
-  const { product, price } = req.body;
-  console.log(req.body);
-  const newItem = new CartItem({ product, price });
-  await newItem.save();
-  res.status(201).json(newItem);
+//cart-> productID => find karenge aur ek json me daal denge uske baad json render kar denge
+
+app.post('/cart/add/:id', isLoggedIn, catchAsync(async (req, res) => {
+  const id = req.params.id;
+  const user = await User.findOne({ _id: req.user._id });
+  const product = await Product.findOne({ _id: id });
+  user.cartTotal += product.price;
+  user.cart.push(id);
+  await user.save();
+  req.flash("success", "Added to Cart!!");
+  res.redirect('/cart');
 }));
+
+
+
+//
 app.get("/gallery", catchAsync(async (req, res) => {
   res.render("gallery");
 }));
