@@ -56,7 +56,7 @@ app.use('/user', userRoutes);
 
 app.get("/paintings", async (req, res, next) => {
   const prods = await Product.find({ category: "Painting" });
-  console.log({prods});
+  console.log({ prods });
   res.render("paintings", { prods });
 });
 app.get('/sell', isLoggedIn, (req, res) => {
@@ -97,8 +97,16 @@ app.get("/sculptures", isLoggedIn, catchAsync(async (req, res) => {
 
 
 app.get('/cart', isLoggedIn, catchAsync(async (req, res) => {
-  const { cart } = await User.find({ username: req.user.username });
-  res.send(cart);
+  const user = await User.findOne({ username: req.user.username });
+  var productArr = [];
+  for (let i = 0; i < user.cart.length; i++) {
+    const product = await Product.findOne({ _id: user.cart[i] });
+    productArr.push(product);
+  }
+  console.log(productArr);
+  console.log(user);
+  console.log({ productArr, user });
+  res.render('cart', { productArr, user });
 }));
 
 //cart-> productID => find karenge aur ek json me daal denge uske baad json render kar denge
@@ -113,9 +121,6 @@ app.post('/cart/add/:id', isLoggedIn, catchAsync(async (req, res) => {
   req.flash("success", "Added to Cart!!");
   res.redirect('/cart');
 }));
-
-
-
 //
 app.get("/gallery", catchAsync(async (req, res) => {
   res.render("gallery");

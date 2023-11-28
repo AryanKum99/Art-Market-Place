@@ -39,10 +39,11 @@
     <div id="st-navbar-desktop-wrapper" class="st-navbar-desktop-wrapper st-navbar-desktop-fixed">
       <%- include('./partials/navbar') %>
     </div>
-    <!-- <h2 class=" art-heading">Featured Paintings</h2> -->
-    <div class="whole-card">
-      <% prods.forEach(function(Product){%>
-        <div class="card" style="height: min-content;width: 700px; margin: 10px;">
+    <h2 class="art-heading"></h2>
+    <form action="/buy/transaction" method="post">
+      <div class="whole-card">
+        <% productArr.forEach(function(Product){%>
+          <div class="card" style="height: min-content;width: 700px; margin: 10px;">
             <img class="item" src="https://codingyaar.com/wp-content/uploads/bootstrap-4-card-image-left-demo-image.jpg"
               class="card-img-top">
             <div class="card-body">
@@ -65,10 +66,17 @@
               <p>Created: <%= Product.creationDate %>
               </p>
               </p>
+
             </div>
-            <% }) %>
-        </div>
-    </div>
+          </div>
+          <% }) %>
+            <div class="card" style="width: 200px; margin-left: 500px; margin-bottom: 50px;">
+              <p>Total Price: Rs. <%= user.cartTotal %>
+              </p>
+            </div>
+      </div>
+      <button type="submit">Buy</button>
+    </form>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
       integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
       crossorigin="anonymous"></script>
@@ -77,6 +85,3 @@
       crossorigin="anonymous"></script>
     <script src="add-to-cart.js"></script>
 </body>
-
-
-</html>
