@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
+const Razorpay = require('razorpay');
+
 const path = require('path');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
@@ -16,6 +18,7 @@ const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 const flash = require('connect-flash');
 const { isLoggedIn } = require('./middleware/middleware');
+require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 app.set('view engine', 'ejs');
 app.engine('ejs', ejsMate);
 app.set('views', path.join(__dirname, 'views'));
@@ -47,7 +50,11 @@ app.use((req, res, next) => {
   res.locals.error = req.flash('error');
   next();
 })
-
+console.log(process.env.RAZORPAY_KEY);
+const razorpayInstance = new Razorpay({
+  key_id: process.env.RAZORPAY_KEY,
+  key_secret: process.env.RAZORPAY_SECRET
+});
 app.get('/', (req, res) => {
   res.render('home');
 });
@@ -130,6 +137,43 @@ app.get("/artists", catchAsync(async (req, res) => {
   console.log(artists);
   res.render("artists", { artists });
 }));
+app.get('/buy/transaction', catchAsync(async (req, res) => {
+  const user = await User.findOne({ _id: req.user._id });
+  res.render('paymentPage', { user });
+}));
+app.post('/buy/transaction', catchAsync(async (req, res) => {
+  const user = await User.findOne({ _id: req.user._id });
+  console.log(req.body);
+  console.log(user.cartTotal);
+  const options = {
+    amount: user.cartTotal,
+    currency: 'INR',
+    receipt: req.user.userEmail
+  }
+
+  razorpayInstance.orders.create(options,
+    (err, order) => {
+      if (!err) {
+        res.status(200).send({
+          success: true,
+          msg: 'Order Created',
+          order_id: 1,
+          amount: user.cartTotal,
+          key_id: process.env.RAZORPAY_KEY,
+          contact: "7003145004",
+          name: "aryan",
+          email: "aryan@gmail.com"
+        });
+      }
+      else {
+        console.log(err);
+        res.status(400).send({ success: false, msg: 'Something went wrong!' });
+      }
+    }
+  );
+}));
+
+
 //login -> sell -> usermodel: isSeller: true -> User.findAll(isSeller:true)
 app.all('*', (req, res, next) => {
   next(new ExpressError('Page Not Found', 404))
@@ -139,5 +183,6 @@ app.use((err, req, res, next) => {
   if (!err.message) err.message = 'Oh No, Something Went Wrong!'
   res.status(statusCode).render('error', { err })
 })
+
 
 module.exports = app;

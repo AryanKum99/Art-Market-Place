@@ -40,7 +40,7 @@
       <%- include('./partials/navbar') %>
     </div>
     <h2 class="art-heading"></h2>
-    <form action="/buy/transaction" method="post">
+    <form action="/buy/transaction" method="get">
       <div class="whole-card">
         <% productArr.forEach(function(Product){%>
           <div class="card" style="height: min-content;width: 700px; margin: 10px;">
@@ -75,7 +75,7 @@
               </p>
             </div>
       </div>
-      <button type="submit">Buy</button>
+      <button type="submit" class="btn-primary btn-md history-btn1">Submit</button>
     </form>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
       integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
