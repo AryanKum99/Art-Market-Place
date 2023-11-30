@@ -18,7 +18,7 @@ const session = require('express-session');
 const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 const flash = require('connect-flash');
-const { isLoggedIn } = require('./middleware/middleware');
+const { isLoggedIn, isAuthor } = require('./middleware/middleware');
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 app.set('view engine', 'ejs');
 app.engine('ejs', ejsMate);
@@ -129,69 +129,118 @@ app.post('/cart/add/:id', isLoggedIn, catchAsync(async (req, res) => {
   res.redirect('/cart');
 }));
 //
+
+app.delete('/cart/:id', catchAsync(async (req, res) => {
+  const prodId = req.params.id;
+  console.log(prodId);
+  const prod = await Product.findById(prodId);
+  const user = await User.findOne({ _id: req.user._id });
+  const index = user.cart.indexOf(prodId);
+  if (index > -1) {
+    user.cart.splice(index, 1);
+  }
+  user.cartTotal = user.cartTotal - prod.price;
+  await user.save();
+  req.flash('success', 'Deleted from Cart Successfully');
+  res.redirect('/cart');
+}))
+
+
 app.get("/gallery", catchAsync(async (req, res) => {
   res.render("gallery");
 }));
+
+
 app.get("/artists", catchAsync(async (req, res) => {
   const artists = await User.find({ isSeller: true });
   console.log(artists);
   res.render("artists", { artists });
 }));
+
+
 app.get('/community', isLoggedIn, catchAsync(async (req, res) => {
   const comments = await Community.find({});
   res.render('communityChat/community', { comments });
 }));
-app.get('/community/new', (req, res) => {
-  res.render('communityChat/newComm');
-})
-app.post('/community/new', catchAsync(async (req, res) => {
+
+
+// app.get('/community/new', (req, res) => {
+//   res.render('communityChat/newComm');
+// })
+
+
+app.post('/community', catchAsync(async (req, res) => {
   const comment = new Community(req.body);
   console.log(req.body);
   comment.author = req.user.username;
   await comment.save();
-  res.send(comment);
+  res.redirect('/community');
 }))
-app.get('/buy/transaction', catchAsync(async (req, res) => {
+
+app.delete('/:commentId', isAuthor, catchAsync(async (req, res) => {
+  const { commentId } = req.params;
+  await Community.findByIdAndDelete(commentId);
+  req.flash('success', 'Successfully deleted review')
+  res.redirect('/community');
+}));
+
+
+
+app.get('/createOrder', catchAsync(async (req, res) => {
   const user = await User.findOne({ _id: req.user._id });
   res.render('paymentPage', { user });
 }));
-app.post('/buy/transaction', catchAsync(async (req, res) => {
-  const user = await User.findOne({ _id: req.user._id });
-  console.log(req.body);
-  console.log(user.cartTotal);
-  const options = {
-    amount: user.cartTotal,
-    currency: 'INR',
-    receipt: req.user.userEmail
-  }
 
-  razorpayInstance.orders.create(options,
-    (err, order) => {
-      if (!err) {
-        res.status(200).send({
-          success: true,
-          msg: 'Order Created',
-          order_id: 1,
-          amount: user.cartTotal,
-          key_id: process.env.RAZORPAY_KEY,
-          contact: "7003145004",
-          name: "aryan",
-          email: "aryan@gmail.com"
-        });
-      }
-      else {
-        console.log(err);
-        res.status(400).send({ success: false, msg: 'Something went wrong!' });
-      }
+
+app.post('/createOrder', async (req, res) => {
+  try {
+    const amount = req.body.amount * 100
+    const options = {
+      amount: amount,
+      currency: 'INR',
+      receipt: 'akum2302@gmail.com'
     }
-  );
-}));
+
+    razorpayInstance.orders.create(options,
+      (err, order) => {
+        if (!err) {
+          res.status(200).send({
+            success: true,
+            msg: 'Order Created',
+            order_id: order.id,
+            amount: amount,
+            key_id: process.env.RAZORPAY_KEY,
+            product_name: "Cart Total",
+            description: "Cart Total",
+            contact: "8567345632",
+            name: "Somdatta Pradhan",
+            email: "somdatta.vskp@gmail.com"
+          });
+        }
+        else {
+          res.status(400).send({ success: false, msg: 'Something went wrong!' });
+        }
+      }
+    );
+    const user = await User.findOne({ _id: req.user._id });
+    while (user.cart.length > 0) {
+      user.cart.pop();
+    }
+    user.cartTotal = 0;
+    await user.save();
+    console.log('success');
+  } catch (error) {
+    console.log(error.message);
+  }
+});
 
 
 //login -> sell -> usermodel: isSeller: true -> User.findAll(isSeller:true)
 app.all('*', (req, res, next) => {
   next(new ExpressError('Page Not Found', 404))
-})
+});
+
+
 app.use((err, req, res, next) => {
   const { statusCode = 500 } = err;
   if (!err.message) err.message = 'Oh No, Something Went Wrong!'
