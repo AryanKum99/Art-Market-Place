@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const Razorpay = require('razorpay');
-
+const AWS = require('aws-sdk');
 const path = require('path');
 const methodOverride = require('method-override');
 const ejsMate = require('ejs-mate');
@@ -10,6 +10,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const userRoutes = require('./routes/user');
 const passport = require('passport');
 const User = require('./models/userModel');
+const Community = require('./models/communityModel');
 const Product = require("./models/productModel");
 const CartItem = require('./models/cartModel');
 const LocalStrategy = require('passport-local');
@@ -66,10 +67,9 @@ app.get("/paintings", async (req, res, next) => {
   console.log({ prods });
   res.render("paintings", { prods });
 });
-app.get('/sell', isLoggedIn, (req, res) => {
-  console.log(req.user);
+app.get('/sell', isLoggedIn, async (req, res) => {
   res.render('sell');
-})
+});
 
 app.post('/sell', isLoggedIn, catchAsync(async (req, res) => {
   console.log(req.body);
@@ -137,6 +137,20 @@ app.get("/artists", catchAsync(async (req, res) => {
   console.log(artists);
   res.render("artists", { artists });
 }));
+app.get('/community', isLoggedIn, catchAsync(async (req, res) => {
+  const comments = await Community.find({});
+  res.render('communityChat/community', { comments });
+}));
+app.get('/community/new', (req, res) => {
+  res.render('communityChat/newComm');
+})
+app.post('/community/new', catchAsync(async (req, res) => {
+  const comment = new Community(req.body);
+  console.log(req.body);
+  comment.author = req.user.username;
+  await comment.save();
+  res.send(comment);
+}))
 app.get('/buy/transaction', catchAsync(async (req, res) => {
   const user = await User.findOne({ _id: req.user._id });
   res.render('paymentPage', { user });
