@@ -1,18 +1,4 @@
-button {
-    border: 1px solid #722A1B;
-    padding: 4px 14px;
-    background-color: #fff;
-    color: #722A1B;
-    text-transform: uppercase;
-    float: right;
-    margin: 5px 0;
-    font-weight: bold;
-    cursor: pointer;
-}
-.art-heading{
-    margin-top: 150px;
-}
-body {
+body{
     
     background-image:
         url("https://marketplace.canva.com/EAE38vuXT7Y/1/0/1600w/canva-sky-blue-cloud-sketch-aesthetic-wallpaper-desktop-L_b4-ecLPkY.jpg");
@@ -20,15 +6,6 @@ body {
     background-position: center;
     text-shadow: 0 0.05rem 0.1rem rgba(0, 0, 0, 0.5);
     background-attachment: fixed;
-}
-span {
-    float: right;
-}
-.shopping-cart {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    margin: 0 10px 0 0;
 }
 .whole-card{
     padding-left: 30%;
@@ -65,3 +42,34 @@ span {
         width: 40%;
       }
     }
+/* .chat-btn{
+    margin-top: 20px;
+    margin-right: 10px;
+} */
+.chat-input {
+    background-color: white;
+    width: 800px;
+    border-radius: 10px 10px 10px 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 50px;
+  }
+  
+  .chat-input input {
+    background-color: #efefef;
+    border: 1px solid #d4d4d4;
+    border-radius: 10px;
+    font-weight: 300;
+    margin: 1px 1px 0 10px;
+    padding: 10px;
+    padding-right: 40px;
+    width: 500px;
+  }
+  .chat-btn {
+    color: #25d366;
+    cursor: pointer;
+  }
+  
+  .chat-btn > i {
+    bottom: 105px;
+  }

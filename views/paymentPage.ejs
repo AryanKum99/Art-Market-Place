@@ -4,18 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/styles/payment.css">
+    <title>Order-Total</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
-    Total:
+    <div class="panel panel-default credit-card-box">
+        <div class="panel-heading display-table">
+            <div class="row display-tr">
+                <h3 class="panel-title display-td">Order Total</h3>
+            </div>
+        </div>
+        <form class="pay-form">
+            <input type="hidden" name="name" value="total">
+            <input type="hidden" name="amount" value="<%=user.cartTotal%>">
+            <input type="hidden" name="description" value="total">
+            <input type="submit" value="Pay Now">
+        </form>
+    </div>
+    <br>
+    Total: <%= user.cartTotal %>
 
-    
-    <form action="/buy/transaction" class="pay-form" method="post">
-        <label for="amount">Total</label>
-        <input type="text" value="<%= user.cartTotal %>" name="amount" id="amount" disabled>
-        <button type="submit">Pay</button>
-    </form>
+
+        
 </body>
 
 </html>
@@ -25,11 +37,11 @@
     $(document).ready(function () {
         $('.pay-form').submit(function (e) {
             e.preventDefault();
-
+            console.log('hey')
             var formData = $(this).serialize();
-
+            console.log(formData)
             $.ajax({
-                url: "/buy/transaction",
+                url: "/createOrder",
                 type: "POST",
                 data: formData,
                 success: function (res) {
