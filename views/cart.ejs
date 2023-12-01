@@ -43,8 +43,7 @@
       <div class="whole-card">
         <% productArr.forEach(function(Product){%>
           <div class="card" style="height: min-content;width: 700px; margin: 10px;">
-            <img class="item" src="https://codingyaar.com/wp-content/uploads/bootstrap-4-card-image-left-demo-image.jpg"
-              class="card-img-top">
+            <img src="<%=Product.image[0].url%>" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title">
                 <p>
