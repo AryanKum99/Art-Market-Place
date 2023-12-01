@@ -21,7 +21,12 @@ const seedDB = async () => {
             price: `${prods[i].price}`,
             category: `${prods[i].category}`,
             creationDate: `${prods[i].creationDate}`,
-            image: `${prods[i].image}`,
+            image: [
+                {
+                    url: 'https://res.cloudinary.com/dpue278hq/image/upload/v1699625031/YelpCamp/ioewmwuihf5qca1hud10.png',
+                    fileName: 'YelpCamp/ioewmwuihf5qca1hud10'
+                }
+            ],
             listedBy: `${prods[i].listedBy}`,
         });
         await products.save();

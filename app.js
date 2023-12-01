@@ -19,6 +19,10 @@ const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
 const flash = require('connect-flash');
 const { isLoggedIn, isAuthor } = require('./middleware/middleware');
+const multer = require('multer');
+const { storage } = require('./cloudinary');
+const upload = multer({ storage });
+
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 app.set('view engine', 'ejs');
 app.engine('ejs', ejsMate);
@@ -51,7 +55,6 @@ app.use((req, res, next) => {
   res.locals.error = req.flash('error');
   next();
 })
-console.log(process.env.RAZORPAY_KEY);
 const razorpayInstance = new Razorpay({
   key_id: process.env.RAZORPAY_KEY,
   key_secret: process.env.RAZORPAY_SECRET
@@ -71,16 +74,18 @@ app.get('/sell', isLoggedIn, async (req, res) => {
   res.render('sell');
 });
 
-app.post('/sell', isLoggedIn, catchAsync(async (req, res) => {
+app.post('/sell', isLoggedIn, upload.array('image'), catchAsync(async (req, res) => {
+  console.log(req.files);
   console.log(req.body);
   const art = new Product(req.body);
   art.listedBy = req.user.username;
+  art.image = req.files.map(f => ({ url: f.path, fileName: f.filename }));
   await art.save();
-  await User.findOneAndUpdate({ username: req.user.username }, {
-    $set: {
-      isSeller: true
-    }
-  });
+  const user = await User.findOne({ username: req.user.username });
+  user.isSeller = true;
+  user.numberArtListed += 1;
+  await user.save();
+
   console.log('success');
   res.redirect('paintings');
 }));

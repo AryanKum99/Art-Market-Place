@@ -43,8 +43,7 @@
       <% prods.forEach(function(Product){%>
         <div class="card" style="height: min-content;width: 700px; margin: 10px;">
           <% if(Product.category==='Sculpture' ) {%>
-            <img src="https://codingyaar.com/wp-content/uploads/bootstrap-4-card-image-left-demo-image.jpg"
-              class="card-img-top">
+            <img src="<%=Product.image[0].url%>" class="card-img-top">
             <div class="card-body">
               <h5 class="card-title">
                 <p>
@@ -66,8 +65,8 @@
               </p>
               </p>
               <form action="/cart/add/<%= Product._id %>" method="post"><button class="add-to-cart" type="submit">Add to
-                cart</button>
-            </form>
+                  cart</button>
+              </form>
             </div>
             <% } %>
         </div>

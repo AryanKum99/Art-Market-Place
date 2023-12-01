@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const imageSchema = new Schema({
+    url: String,
+    fileName: String
+})
 
+imageSchema.virtual('thumbnail').get(function () {
+    return this.url.replace('/upload', '/upload/w_100');
+})
 const productsSchema = new Schema({
     artName: {
         type: String,
@@ -24,7 +31,7 @@ const productsSchema = new Schema({
         type: String,
         required: true
     },
-    image: String,
+    image: [imageSchema],
 });
 
 module.exports = mongoose.model('Product', productsSchema);
