@@ -35,6 +35,7 @@
 </head>
 
 <body>
+  <div id="preloader"></div>
   <%- include('./partials/flash')%>
     <div id="st-navbar-desktop-wrapper" class="st-navbar-desktop-wrapper st-navbar-desktop-fixed">
       <%- include('./partials/navbar') %>
@@ -73,6 +74,12 @@
         </div>
         <% }) %>
     </div>
+    <script>
+      var loader = document.getElementById("preloader");
+      window.addEventListener("load", () => {
+        loader.style.display = "none";
+      })
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
       integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
       crossorigin="anonymous"></script>

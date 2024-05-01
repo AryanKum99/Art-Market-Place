@@ -43,68 +43,68 @@
 </head>
 
 <body style="background-image: none;">
-        <div id="st-navbar-desktop-wrapper" class="st-navbar-desktop-wrapper st-navbar-desktop-fixed">
-            <%- include('./partials/navbar') %>
-        </div>
-        <section style="margin: 120px;">
-            <div>
-                <h1 class="top-heading">Share your creativity with the world today!</h1>
-                <form action="/sell" method="post" name="art-form" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <table id="appt-table" class="table">
-                            <tr class="trow">
-                                <td>
-                                    <label for="artName" class="label-font">Name of your masterpiece: </label>
-                                </td>
-                                <td>
-                                    <h4>
-                                        <input class="form-control" type="text" id="artName" name="artName" required>
-                                    </h4>
-                                </td>
-                            </tr>
-                            <tr class="trow">
-                                <td>
-                                    <label for="description" class="label-font">What makes your masterpiece unique?
-                                    </label>
-                                </td>
-                                <td>
-                                    <h4>
-                                        <input class="form-control" type="text" id="description" name="description"
-                                            required>
-                                    </h4>
-                                </td>
-                            </tr>
-                            <tr class="trow">
-                                <td><label for="category" class="label-font">Select Category: </label></td>
-                                <td><select name="category" id="category">
-                                        <option value="">--Choose category--</option>
-                                        <option value="Painting">Painting</option>
-                                        <option value="Sketches">Sketches</option>
-                                        <option value="Sculpture">Sculpture</option>
-                                    </select></td>
-                            </tr>
-                            <tr>
-                            <tr class="trow">
-                                <td>
-                                    <label for="price" class="label-font">Price: </label>
-                                </td>
-                                <td>
-                                    <h4>
-                                        <input class=" form-control" type="number" id="price" name="price" required>
-                                    </h4>
-                                </td>
-                            </tr>
-                            <tr class="trow">
-                                <td><label for="date" class="label-font">Date of Creation of this Masterpiece:
-                                    </label>
-                                </td>
-                                <td>
-                                    <h4>
-                                        <input type="datetime-local" name="creationDate" id="creationDate">
-                                    </h4>
-                                </td>
-                            </tr>
-                            <!-- <tr class="trow">
+    <div id="st-navbar-desktop-wrapper" class="st-navbar-desktop-wrapper st-navbar-desktop-fixed">
+        <%- include('./partials/navbar') %>
+    </div>
+    <section style="margin: 120px;">
+        <div>
+            <h1 class="top-heading">Share your creativity with the world today!</h1>
+            <form action="/sell" method="post" name="art-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <table id="appt-table" class="table">
+                        <tr class="trow">
+                            <td>
+                                <label for="artName" class="label-font">Name of your masterpiece: </label>
+                            </td>
+                            <td>
+                                <h4>
+                                    <input class="form-control" type="text" id="artName" name="artName" required>
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr class="trow">
+                            <td>
+                                <label for="description" class="label-font">What makes your masterpiece unique?
+                                </label>
+                            </td>
+                            <td>
+                                <h4>
+                                    <input class="form-control" type="text" id="description" name="description"
+                                        required>
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr class="trow">
+                            <td><label for="category" class="label-font">Select Category: </label></td>
+                            <td><select name="category" id="category">
+                                    <option value="">--Choose category--</option>
+                                    <option value="Painting">Painting</option>
+                                    <option value="Sketches">Sketches</option>
+                                    <option value="Sculpture">Sculpture</option>
+                                </select></td>
+                        </tr>
+                        <tr>
+                        <tr class="trow">
+                            <td>
+                                <label for="price" class="label-font">Price: </label>
+                            </td>
+                            <td>
+                                <h4>
+                                    <input class=" form-control" type="number" id="price" name="price" required>
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr class="trow">
+                            <td><label for="date" class="label-font">Date of Creation of this Masterpiece:
+                                </label>
+                            </td>
+                            <td>
+                                <h4>
+                                    <input type="datetime-local" name="creationDate" id="creationDate">
+                                </h4>
+                            </td>
+                        </tr>
+                        <!-- <tr class="trow">
                                 <td>
                                     <label for="name">Your Preferred Name: </label>
                                 </td>
@@ -114,32 +114,32 @@
                                     </h4>
                                 </td>
                             </tr> -->
-                            <tr class="trow">
-                                <td>
-                                    <label for="name">Upload your Masterpiece: </label>
-                                </td>
-                                <td>
-                                    <div class="input-group mb-3">
-                                        <input type="file" class="form-control" id="image" name="image">
-                                        <label class="input-group-text" for="image">Upload</label>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tr>
-                        </table>
-                        <div class="lg-6">
-                            <button class="btn-primary btn-md history-btn1">Submit Work</button>
-                        </div>
+                        <tr class="trow">
+                            <td>
+                                <label for="name">Upload your Masterpiece: </label>
+                            </td>
+                            <td>
+                                <div class="input-group mb-3">
+                                    <input type="file" class="form-control" id="image" name="image">
+                                    <label class="input-group-text" for="image">Upload</label>
+                                </div>
+                            </td>
+                        </tr>
+                        </tr>
+                    </table>
+                    <div class="lg-6">
+                        <button class="btn-primary btn-md history-btn1">Submit Work</button>
                     </div>
-                </form>
-            </div>
-        </section>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
-            integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
-            crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
-            integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
-            crossorigin="anonymous"></script>
+                </div>
+            </form>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+        integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+        integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+        crossorigin="anonymous"></script>
 </body>
 
 

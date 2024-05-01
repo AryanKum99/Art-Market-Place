@@ -19,8 +19,8 @@
                     <li><a href="/sell" style="text-decoration: none;">Sell</a></li>
                     <li><a href="/cart"><span><i class="fa-solid fa-cart-shopping"></i></span></a></li>
                     <% if(!currentUser) {%>
-                        <li><a href="/user/login" style="text-decoration: none;">Login</a></li>
-                        <li><a href="/user/register" style="text-decoration: none;">Signup</a></li>
+                        <a href="/user/login" style="text-decoration: none;">Login</a>
+                        <a href="/user/signup" style="text-decoration: none;">Signup</a>
                         <% } else {%>
                             <li><a href="/user/logout" style="text-decoration: none;">Logout</a></li>
                             <% } %>
